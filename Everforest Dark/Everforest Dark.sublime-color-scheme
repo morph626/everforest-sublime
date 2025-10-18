@@ -243,7 +243,7 @@
     },
     {
       "name": "Markdown URL",
-      "scope": "markup.underline.link | markup.underline.link.markdown | markup.underline.link.image.markdown | markup.underline.link.markdown-gfm",
+      "scope": "markup.underline.link | markup.underline.link.markdown | markup.underline.link.image.markdown | markup.underline.link.markdown-gfm | punctuation.separator.path.markdown",
       "foreground": "var(blue)",
       "font_style": "underline"
     },
