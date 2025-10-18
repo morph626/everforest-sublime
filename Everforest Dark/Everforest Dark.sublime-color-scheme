@@ -2,11 +2,11 @@
   "name": "Everforest Dark",
   "author": "",
   "globals": {
-    "background": "#2d353b",
+    "background": "var(bg0)",
     "foreground": "#d3c6aa",
     "caret": "#d3c6aa",
     "block_caret": "#d3c6aa",
-    "line_highlight": "#3d484d90",
+    "line_highlight": "var(bg1)",
     "misspelling": "#da6362",
     "fold_marker": "#a7c080",
     "accent": "#a7c080",
@@ -15,12 +15,12 @@
     "line_diff_added": "#569d7930",
     "line_diff_modified": "#7fbbb3a0",
     "line_diff_deleted": "#da636230",
-    "selection": "#475258c0",
+    "selection": "var(bg_visual)",
     "inactive_selection": "#47525880",
     "inactive_selection_foreground": "#9aa79d",
-    "highlight": "#899c4040",
-    "find_highlight": "#899c4040",
-    "find_highlight_foreground": "#a7c080",
+    "highlight": "var(aqua)",
+    "find_highlight": "var(bg_green)",
+    "find_highlight_foreground": "var(green)",
     "guide": "#9aa79d20",
     "active_guide": "#d3c6aa",
     "stack_guide": "#859289",
@@ -29,15 +29,29 @@
     "shadow": "#00000070"
   },
   "variables": {
+    "bg0": "#2d353b",
+    "bg1": "#343f44",
+    "bg3": "#475258",
+    "bg4": "#4f585e",
+    "bg_visual": "#543a48",
+    "bg_red": "#514045",
+    "bg_yellow": "#4d4c43",
+    "bg_green": "#425047",
+    "bg_blue": "#3a515d",
+    "bg_purple": "#4a444e",
     "black": "#343f44",
     "white": "#d3c6aa",
     "red": "#e67e80",
     "green": "#a7c080",
     "yellow": "#dbbc7f",
-    "orange": "#dbbc7f",
+    "orange": "#e69875",
     "blue": "#7fbbb3",
     "magenta": "#d699b6",
-    "cyan": "#83c092"
+    "cyan": "#83c092",
+    "aqua": "#83c092",
+    "purple": "#d699b6",
+    "grey0": "#7a8478",
+    "grey1": "#859289"
   },
   "rules": [
     {
@@ -167,121 +181,143 @@
       "scope": "variable.object.property, support.variable.property, variable.other.property, variable.other.object.property, variable.other.enummember, variable.other.member, meta.object-literal.key"
     },
     {
-      "name": "Delimiter",
-      "foreground": "#d3c6aa",
-      "font_style": 0,
-      "scope": "punctuation, meta.brace, meta.delimiter, meta.bracket"
+      "name": "Markdown header default",
+      "font_style": "bold italic",
+      "scope": "markup.heading | entity.name.section"
     },
     {
-      "name": "Markdown heading1",
-      "foreground": "#e67e80",
-      "font_style": "bold",
-      "scope": "heading.1.markdown, markup.heading.setext.1.markdown"
+      "scope": "markup.heading.1",
+      "foreground": "var(red)"
     },
     {
-      "name": "Markdown heading2",
-      "foreground": "#e69875",
-      "font_style": "bold",
-      "scope": "heading.2.markdown, markup.heading.setext.2.markdown"
+      "scope": "markup.heading.2",
+      "foreground": "var(orange)"
     },
     {
-      "name": "Markdown heading3",
-      "foreground": "#dbbc7f",
-      "font_style": "bold",
-      "scope": "heading.3.markdown"
+      "scope": "markup.heading.3",
+      "foreground": "var(yellow)"
     },
     {
-      "name": "Markdown heading4",
-      "foreground": "#a7c080",
-      "font_style": "bold",
-      "scope": "heading.4.markdown"
+      "scope": "markup.heading.4",
+      "foreground": "var(green)"
     },
     {
-      "name": "Markdown heading5",
-      "foreground": "#7fbbb3",
-      "font_style": "bold",
-      "scope": "heading.5.markdown"
+      "scope": "markup.heading.5",
+      "foreground": "var(blue)"
     },
     {
-      "name": "Markdown heading6",
-      "foreground": "#d699b6",
-      "font_style": "bold",
-      "scope": "heading.6.markdown"
+      "scope": "markup.heading.6",
+      "foreground": "var(purple)"
     },
     {
-      "name": "Markdown heading delimiter",
-      "foreground": "#859289",
-      "font_style": "regular",
-      "scope": "punctuation.definition.heading.markdown"
+      "scope": "markup.bold",
+      "foreground": "var(yellow)",
+      "font_style": "bold"
     },
     {
-      "name": "Markdown link",
-      "foreground": "#d699b6",
-      "font_style": "regular",
-      "scope": "string.other.link.title.markdown, constant.other.reference.link.markdown, string.other.link.description.markdown"
+      "scope": "markup.italic",
+      "foreground": "var(purple)",
+      "font_style": "italic"
+    },
+    {
+      "scope": "markup.bold markup.italic | mark.italic markup.bold",
+      "foreground": "var(red)",
+      "font_style": "italic bold"
+    },
+    {
+      "scope": "markup.underline",
+      "font_style": "underline"
+    },
+    {
+      "scope": "markup.strikethrough",
+      "foreground": "var(grey1)"
+    },
+    {
+      "scope": "markup.inserted",
+      "foreground": "var(green)",
+      "font_style": "underline"
+    },
+    {
+      "scope": "markup.deleted",
+      "foreground": "var(red)"
+    },
+    {
+      "name": "Markdown URL",
+      "scope": "markup.underline.link | markup.underline.link.markdown | markup.underline.link.image.markdown | markup.underline.link.markdown-gfm",
+      "foreground": "var(blue)",
+      "font_style": "underline"
     },
     {
       "name": "Markdown link text",
-      "foreground": "#a7c080",
-      "font_style": "underline",
-      "scope": "markup.underline.link.image.markdown, markup.underline.link.markdown"
+      "scope": "meta.link.inline.description | meta.image.inline.description | meta.link.reference.description | meta.image.reference.description | entity.name.reference.link | meta.link.reference.literal | meta.link.reference.footnote",
+      "foreground": "var(green)"
     },
     {
-      "name": "Markdown delimiter",
-      "foreground": "#859289",
-      "font_style": 0,
-      "scope": "punctuation.definition.string.begin.markdown, punctuation.definition.string.end.markdown, punctuation.definition.italic.markdown, punctuation.definition.quote.begin.markdown, punctuation.definition.metadata.markdown, punctuation.separator.key-value.markdown, punctuation.definition.constant.markdown"
+      "scope": "meta.string.title",
+      "foreground": "var(orange)"
     },
     {
-      "name": "Markdown bold delimiter",
-      "foreground": "#859289",
-      "font_style": "regular",
-      "scope": "punctuation.definition.bold.markdown"
+      "name": "Markdown footnote",
+      "scope": "meta.link.reference.def",
+      "foreground": "var(grey1)"
     },
     {
-      "name": "Markdown separator delimiter",
-      "foreground": "#859289",
-      "font_style": "bold",
-      "scope": "meta.separator.markdown, punctuation.definition.constant.begin.markdown, punctuation.definition.constant.end.markdown"
+      "scope": "markup.quote",
+      "foreground": "var(grey1)",
+      "font_style": "italic"
     },
     {
-      "name": "Markdown italic",
-      "font_style": "italic",
-      "scope": "markup.italic"
+      "scope": "markup.heading.alert.note | markup.info",
+      "background": "var(bg_blue)",
+      "foreground": "var(blue)"
     },
     {
-      "name": "Markdown bold",
-      "font_style": "bold",
-      "scope": "markup.bold"
+      "scope": "markup.heading.alert.tip",
+      "background": "var(bg_green)",
+      "foreground": "var(green)"
     },
     {
-      "name": "Markdown bold italic",
-      "font_style": "italic bold",
-      "scope": "markup.bold markup.italic, markup.italic markup.bold"
+      "scope": "markup.heading.alert.important",
+      "background": "var(bg_purple)",
+      "foreground": "var(purple)"
     },
     {
-      "name": "Markdown code delimiter",
-      "foreground": "#dbbc7f",
-      "font_style": 0,
-      "scope": "punctuation.definition.markdown, punctuation.definition.raw.markdown"
+      "scope": "markup.heading.alert.warning",
+      "background": "var(bg_yellow)",
+      "foreground": "var(yellow)"
     },
     {
-      "name": "Markdown code type",
-      "foreground": "#dbbc7f",
-      "font_style": 0,
-      "scope": "fenced_code.block.language"
+      "scope": "markup.heading.alert.caution",
+      "background": "var(bg_red)",
+      "foreground": "var(red)"
     },
     {
-      "name": "Markdown code block",
-      "foreground": "#a7c080",
-      "font_style": 0,
-      "scope": "markup.fenced_code.block.markdown, markup.inline.raw.string.markdown"
+      "scope": "markup.raw.inline | markup.raw.block",
+      "foreground": "var(aqua)",
+      "font_style": "glow"
     },
     {
-      "name": "Markdown list mark",
-      "foreground": "#e67e80",
-      "font_style": 0,
-      "scope": "punctuation.definition.list.begin.markdown"
+      "name": "Markdown code block language",
+      "scope": "constant.other.language-name",
+      "foreground": "var(yellow)"
+    },
+    {
+      "scope": "markup.math",
+      "foreground": "var(purple)"
+    },
+    {
+      "scope": "punctuation.definition.thematic-break",
+      "foreground": "var(grey1)"
+    },
+    {
+      "scope": "punctuation | markup.list.unnumbered.bullet | markup.list.numbered.bullet",
+      "foreground": "var(grey0)",
+      "font_style": "regular"
+    },
+    {
+      "scope": "punctuation.definition.blockquote",
+      "background": "color(var(grey0) alpha(0.25))",
+      "foreground": "color(var(grey0) alpha(0.25))"
     },
     {
       "name": "reStructuredText heading",
